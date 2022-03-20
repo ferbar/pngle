@@ -63,6 +63,11 @@ void load_png(const char *url, double scale = 1.0)
   WiFiClient *stream = http.getStreamPtr();
 
   pngle_t *pngle = pngle_new();
+  if(!pngle) {
+    tft.printf("pngle_new failed\n");
+    http.end();
+    return ;
+  }
   pngle_set_draw_callback(pngle, pngle_on_draw);
   g_scale = scale;
 
