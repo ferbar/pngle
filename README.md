@@ -72,6 +72,10 @@ void on_draw(pngle_t *pngle, uint32_t x, uint32_t y, uint32_t w, uint32_t h, uin
 int main(int argc, char *argv[])
 {
     pngle_t *pngle = pngle_new();
+    if(!pngle) { // unable to allocate 43kb ram
+        printf(!pngle_new failed!");
+	return 0;
+    }
 
     pngle_set_draw_callback(pngle, on_draw);
 
